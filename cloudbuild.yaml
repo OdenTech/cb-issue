@@ -1,0 +1,17 @@
+steps:
+  # Build the container image.
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: '/bin/sh'
+    args:
+      - '-c'
+      - |
+        docker build -t buildtest:latest .
+
+  # run the container image.
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: '/bin/sh'
+    args:
+      - '-c'
+      - |
+        docker run --privileged buildtest:latest
+
