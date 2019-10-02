@@ -1,6 +1,6 @@
 steps:
   # Build the container image.
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: 'gcr.io/oden-qa/balena-build:latest'
     entrypoint: '/bin/sh'
     args:
       - '-c'
@@ -8,7 +8,7 @@ steps:
         docker build -t buildtest:latest .
 
   # run the container image.
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: 'gcr.io/oden-qa/balena-build:latest'
     entrypoint: '/bin/sh'
     args:
       - '-c'
