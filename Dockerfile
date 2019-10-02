@@ -1,6 +1,6 @@
 FROM debian
 
-WORKDIR /
+WORKDIR /workspace
 ADD test.sh .
 
 ENTRYPOINT ["/test.sh"]
