@@ -1,11 +1,13 @@
 #!/bin/bash -ex
 
+
 dd if=/dev/zero of=/disk.img bs=1k count=1000
-losetup -f /disk.img
-mkfs -t ext2 /dev/loop0 100
-mount -t ext2 /dev/loop0 /mnt
+LOOPDEV=$(losetup -f)
+losetup ${LOOPDEV} /disk.img
+mkfs -t ext2 ${LOOPDEV} 100
+mount -t ext2 ${LOOPDEV} /mnt
 touch /mnt/foo
-umount /dev/loop0
-losetup -d /dev/loop0
+umount ${LOOPDEV}
+losetup -d ${LOOPDEV}
 
 echo "SUCCESS!"
