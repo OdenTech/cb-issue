@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/sh -ex
 
 
 dd if=/dev/zero of=/disk.img bs=1k count=1000
