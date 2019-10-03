@@ -2,7 +2,14 @@ steps:
   # run the container image.
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: '/bin/sh'
+    secretEnv:
+      - BALENA_TOKEN
     args:
       - '-xc'
       - |
-        docker run --privileged -v /workspace:/workspace docker:stable-dind /workspace/outer_test.sh
+        docker run --privileged -e BALENA_TOKEN -v /workspace:/workspace docker:stable-dind /workspace/outer_test.sh
+
+secrets:
+  - kmsKeyName: projects/oden-qa/locations/global/keyRings/cloudbuild/cryptoKeys/cloudbuild
+    secretEnv:
+      BALENA_TOKEN: CiQAOZLGWMD59EgJ0ZMhVUyKC6xKrIOfR+r/9YI2uPvpGBjjq/0SSQCxBFT/BGhAv10rC9p7SPsgL8X+oTINtH/i35PHSgVQfdY+cSs9NaiMXchUtLlITxcDLoxBtXeYgoKKbnDR8glITm/tryqehFY=
