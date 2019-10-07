@@ -1,5 +1,4 @@
 FROM docker:stable-dind
-
-WORKDIR /worksapce
-COPY . .
-ENTRYPOINT ["/workspace/outer_test.sh"]
+WORKDIR /usr/src/app
+COPY Dockerfile.inner .
+CMD dockerd & sleep 3 && docker build -f Dockerfile.inner -t inner . && docker run --privileged -v /disk-image:/disk-image inner

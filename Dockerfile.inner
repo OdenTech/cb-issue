@@ -1,6 +1,2 @@
 FROM debian
-
-WORKDIR /workspace
-ADD inner_test.sh .
-
-ENTRYPOINT ["/workspace/inner_test.sh"]
+CMD losetup --find --show --partscan /disk-image && losetup --detach-all
