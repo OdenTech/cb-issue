@@ -5,4 +5,4 @@ steps:
     args:
       - '-xc'
       - |
-        docker run --privileged -v /workspace:/workspace docker:stable-dind /workspace/outer_test.sh
+              dd if=/dev/zero of=/workspace/disk-image count=1 bs=1M && docker build -f Dockerfile.outer -t outer . && docker run --privileged --rm -v /workspace/disk-image:/disk-image outer
