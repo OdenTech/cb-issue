@@ -1,0 +1,5 @@
+FROM docker:stable-dind
+
+WORKDIR /worksapce
+COPY . .
+ENTRYPOINT ["/workspace/outer_test.sh"]

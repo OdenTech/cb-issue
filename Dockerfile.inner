@@ -1,6 +1,6 @@
 FROM debian
 
 WORKDIR /workspace
-ADD . .
+ADD inner_test.sh .
 
 ENTRYPOINT ["/workspace/inner_test.sh"]

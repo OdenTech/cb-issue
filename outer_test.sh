@@ -8,6 +8,7 @@ export DOCKER_HOST=unix:///var/run/docker.sock
 
 cd /workspace
 
+dd if=/dev/zero of=/workspace/disk.img bs=1k count=1000
 
 docker build -t inner-container:latest -f Dockerfile.inner .
-docker run --privileged inner-container:latest
+docker run --rm --privileged -v /workspace/disk.img:/mnt/disk.img inner-container:latest
