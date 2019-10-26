@@ -1,8 +1,7 @@
 steps:
-  # run the container image.
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: '/bin/sh'
     args:
       - '-xc'
       - |
-        docker run --privileged -v /workspace:/workspace docker:stable-dind /workspace/outer_test.sh
+        docker run --privileged -v /workspace:/workspace docker:stable-dind ./workspace/dind_entry.sh
