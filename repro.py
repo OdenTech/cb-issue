@@ -5,8 +5,11 @@ from sh import (
         file,
         losetup
 )
+from time import sleep
 
-IMAGE = "/img/disk.img"
+IMAGE = "/workspace/disk.img"
+
+print("======================================== beginning repro.py in Dockerfile.inner container run by docker-dind in GCB")
 
 @contextmanager
 def losetup_ctxmgr():
@@ -16,22 +19,11 @@ def losetup_ctxmgr():
     yield device
     losetup("-d", device)
 
-# @contextmanager
-# def device_mount_ctxmgr(device):
-#     mountpoint = mkdtemp()
-#     mount(device, mountpoint)
-#     yield mountpoint
-#     umount(mountpoint)
-#     os.rmdir(mountpoint)
-# 
-# @contextmanager
-# def mount_ctx_mgr():
-#     with losetup_ctxmgr() as device:
-#         with device_mount_ctxmgr(device) as mountpoint:
-#             yield mountpoint
-
 def main():
-    with losetup_context_manager() as device:
+    with losetup_ctxmgr() as device:
+        out = file("-s", device).stdout.decode("utf8").strip()
+        print(out)
+    with losetup_ctxmgr() as device:
         out = file("-s", device).stdout.decode("utf8").strip()
         print(out)
 

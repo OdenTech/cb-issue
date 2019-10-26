@@ -8,4 +8,4 @@ RUN pip3 install -r /tmp/requirements.txt
 
 COPY . .
 
-ENTRYPOINT ["inner.sh"]
+ENTRYPOINT ["./repro.py"]
