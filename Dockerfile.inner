@@ -1,6 +1,11 @@
-FROM debian
+FROM docker:17.10.0-ce-dind
 
-WORKDIR /workspace
-ADD . .
+RUN apk update && apk add --no-cache python3 parted btrfs-progs docker util-linux sfdisk file coreutils sgdisk
 
-ENTRYPOINT ["/workspace/inner_test.sh"]
+COPY ./requirements.txt /tmp/
+
+RUN pip3 install -r /tmp/requirements.txt
+
+COPY . .
+
+ENTRYPOINT ["inner.sh"]

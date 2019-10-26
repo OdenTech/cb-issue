@@ -1,4 +1,3 @@
 {
-  "appUpdatePollInterval": 10,
-  "network": "ethernet"
+  "appUpdatePollInterval": 5
 }

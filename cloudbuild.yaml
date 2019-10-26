@@ -10,6 +10,6 @@ steps:
         docker run --privileged -e BALENA_TOKEN -v /workspace:/workspace docker:stable-dind /workspace/outer_test.sh
 
 secrets:
-  - kmsKeyName: projects/oden-qa/locations/global/keyRings/cloudbuild/cryptoKeys/cloudbuild
+  - kmsKeyName: projects/useful-flame-255619/locations/global/keyRings/my-keyring/cryptoKeys/enc-key
     secretEnv:
-      BALENA_TOKEN: CiQAOZLGWMD59EgJ0ZMhVUyKC6xKrIOfR+r/9YI2uPvpGBjjq/0SSQCxBFT/BGhAv10rC9p7SPsgL8X+oTINtH/i35PHSgVQfdY+cSs9NaiMXchUtLlITxcDLoxBtXeYgoKKbnDR8glITm/tryqehFY=
+      BALENA_TOKEN: CiQAKomhUuncJ3BU948o+lhY+2eAnIlTFIkAQEnmfmFTestOmrYSSQCVdaAvrQws+RpMA62ammFLAaawzFYo5gNai1vjXxVFqxDwSk/M11ryWUYbyqiH233o4aetm3rT600WT6wreInUz4CyR9j2qLQ=
